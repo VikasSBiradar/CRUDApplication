@@ -1,0 +1,27 @@
+<div class="container mt-3">
+    <div class="text-end">
+        <a href="#" routerLink="/post/index" class="btn btn-outline-primary">Back</a>
+    </div>
+    <div class="card mt-3">
+        <div class="card-header h3">Create post</div>
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input formControlName="title" id="title" type="text" class="form-control">
+                    <div *ngIf="formControl['title'].touched && formControl['title'].invalid" class="alert alert-danger">
+                        <div *ngIf="formControl['title'].errors && formControl['title'].errors['required']">Title is required.</div>
+                    </div>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="body">Description:</label>
+                    <textarea formControlName="body" id="body" type="body" class="form-control" cols="30" rows="3"></textarea>
+                    <div *ngIf="formControl['body'].touched && formControl['body'].invalid" class="alert alert-danger">
+                        <div *ngIf="formControl['body'].errors && formControl['body'].errors['required']">Description is required.</div>
+                    </div>
+                </div>
+                <button class="btn btn-outline-success my-3 float-end" type="submit" [disabled]="!form.valid">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
